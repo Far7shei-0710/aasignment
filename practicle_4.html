@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+     <style>
+        body{
+            background-color: brown;
+        }
+        script{
+            background-color: aqua;
+        }
+        title{
+            background-color: black;
+        }
+        
+    </style>
+    <title>JSON Example - student information</title>
+    
+
+    <script>
+        // JSON object storing programming books information
+        var student = {
+            "studentlist": [
+                {
+                    "name": "ab devillers",
+                    "phone": "1223467567",
+                    "gender": "male",
+                    "age": "18",
+
+                },
+               {
+                    "name": "sachin",
+                    "phone": "9223447567",
+                    "gender": "male",
+                    "age": "19" ,
+                },
+                {
+                    "name": "dhoni",
+                    "phone": "2223467567",
+                    "gender": "male",
+                    "age": "20",
+                },
+                {
+                    "name": "rohit",
+                    "phone": "9023467567",
+                    "gender": "male",
+                    "age": "18",
+                },
+                {
+                    "name": "virat",
+                    "phone": "8623467567",
+                    "gender": "male",
+                    "age": "18",
+                },
+               
+            ]
+        };
+
+        function displaystudent() {
+            document.write("<h1>student information</h1>");
+            for (var i = 0; i < student.studentlist.length; i++) {
+                var b = student.studentlist[i];
+               
+                  document.write("<p ><b>name:</b>" + b.name+ "</p>");
+                document.write("<p><b>phone.no:</b> " + b.phone+ "</p>");
+                document.write("<p><b>gender:</b> " + b.gender + "</p>");
+                document.write("<p><b>age</b> " + b.age + "</p>");
+                 
+                document.write("<hr>");
+            }
+        }
+    </script>
+   
+</head>
+<body onload="displaystudent()">
+</body>
+</html>
