@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Employee Info</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .employee {
+            border: 1px solid #ccc;
+            padding: 12px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+        }
+        
+        h2 {
+            color: #333;
+        }
+        #secondEmployee {
+            background-color: rgb(255, 255, 255);
+            border: 2px solid rgb(184, 237, 51);
+            padding: 10px;
+            margin-top: 20px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>All Employees</h2>
+    <div id="allEmployees">Loading employee data...</div>
+
+    <h2>Second Employee Details</h2>
+    <div id="secondEmployee">Loading second employee...</div>
+
+    <script>
+        const xhttp = new XMLHttpRequest();
+        xhttp.open("GET", "external.xml", true);
+        xhttp.send();
+
+        xhttp.onreadystatechange = function () {
+            if (this.readyState === 4 && this.status === 200) {
+                const xmlDoc = this.responseXML;
+                const employees = xmlDoc.getElementsByTagName("employee");
+
+                if (employees.length === 0) {
+                    document.getElementById("allEmployees").innerHTML = "No employees found.";
+                    document.getElementById("secondEmployee").innerHTML = "Second employee not available.";
+                    return;
+                }
+                let allOutput = '';
+
+                for (let i = 0; i < employees.length; i++) {
+                    const emp = employees[i];
+                    const empID = emp.getElementsByTagName("empID")[0].textContent;
+                    const name = emp.getElementsByTagName("name")[0].textContent;
+                    const department = emp.getElementsByTagName("department")[0].textContent;
+                    const designation = emp.getElementsByTagName("designation")[0].textContent;
+                    const email = emp.getElementsByTagName("email")[0].textContent;
+                    const salary = emp.getElementsByTagName("salary")[0].textContent;
+
+                    allOutput += `
+                        <div class="employee ${i === 1 ? 'highlight' : ''}">
+                            <p><strong>ID:</strong> ${empID}</p>
+                            <p><strong>Name:</strong> ${name}</p>
+                            <p><strong>Department:</strong> ${department}</p>
+                            <p><strong>Designation:</strong> ${designation}</p>
+                            <p><strong>Email:</strong> ${email}</p>
+                            <p><strong>Salary:</strong> ${salary}</p>
+                        </div>
+                    `;
+                }
+
+                document.getElementById("allEmployees").innerHTML = allOutput;
+                if (employees.length >= 2) {
+                    const second = employees[1];
+
+                    const empID = second.getElementsByTagName("empID")[0].textContent;
+                    const name = second.getElementsByTagName("name")[0].textContent;
+                    const department = second.getElementsByTagName("department")[0].textContent;
+                    const designation = second.getElementsByTagName("designation")[0].textContent;
+                    const email = second.getElementsByTagName("email")[0].textContent;
+                    const salary = second.getElementsByTagName("salary")[0].textContent;
+
+                    const secondOutput = `
+                        <p><strong>ID:</strong> ${empID}</p>
+                        <p><strong>Name:</strong> ${name}</p>
+                        <p><strong>Department:</strong> ${department}</p>
+                        <p><strong>Designation:</strong> ${designation}</p>
+                        <p><strong>Email:</strong> ${email}</p>
+                        <p><strong>Salary:</strong> ${salary}</p>
+                    `;
+
+                    document.getElementById("secondEmployee").innerHTML = secondOutput;
+                } else {
+                    document.getElementById("secondEmployee").innerHTML = "Second employee not available.";
+                }
+            }
+        };
+    </script>
+</body>
+</html>
+
