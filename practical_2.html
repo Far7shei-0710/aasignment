@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <title>Student Registration Form</title>
+</head>
+<body>
+    <style>
+        body{
+            background-color: pink;
+        }
+    </style>
+
+    <h2>Student Registration Form</h2>
+
+    <p>Please provide your details below.</p>
+
+    <form action="/register_student.php" oninput="skill_level.value=parseInt(a.value)">
+
+        <fieldset>
+            <legend>Student Information</legend>
+            <label for="fname">First name:</label><br>
+            <input type="text" id="fname" name="fname"><br><br>
+
+            <label for="lname">Last name:</label><br>
+            <input type="text" id="lname" name="lname"><br><br>
+
+            <label for="roll">roll no:</label><br>
+            <input type="text" id="roll" name="roll"><br><br>
+
+
+        </fieldset>
+
+        <fieldset>
+            <legend>Age</legend>
+            <label for="a">enter your age (0-100):</label><br>
+            <input type="range" id="a" name="a" value="50">
+            <output name="skill_level" for="a">50</output><br><br>
+        </fieldset>
+
+        <input type="submit" value="Submit">
+
+    </form>
+
+</body>
+</html>
