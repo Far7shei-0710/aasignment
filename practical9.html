@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <script>
+      function submit() {
+
+        const errorDiv = document.getElementById("errorDiv");
+        const username = document.getElementById("FirstName").value;
+        const password = document.getElementById("password").value;
+        const email = document.getElementById("Email").value;
+        const mobileNo = document.getElementById("MobileNo").value;
+        const lastNameAndAddress = document.getElementById("LastnameAndAddress").value;
+
+        if (username.length < 6) {
+          errorDiv.innerText = "Username must contain at least 6 characters long";
+          return;
+        }
+        if (!username.match(/^[A-Za-z]+$/)) {
+          errorDiv.innerText = "Username must contain only letters";
+          return;
+        }
+
+        if (password.length < 6) {
+          errorDiv.innerText = "Password must contain at least 6 characters long";
+          return;
+        }
+
+        if (!email.match(/^[A-Za-z0-9_.-]+@[A-Za-z0-9]+\.[A-Za-z0-9]{2,}$/)) {
+          errorDiv.innerHTML = "Invalid Email parrern";
+        }
+
+        if(!mobileNo.match(/^[0-9]{10}$/)) {
+          errorDiv.innerHTML = "Invalid Mobile No."
+        }
+
+        if (lastNameAndAddress.length == 0) {
+          errorDiv.innerText = "last name and address should not be empty";
+        }
+
+        errorDiv.innerHTML = "ALL INPUTS ARE VALID";
+      }
+    </script>
+  </head>
+  <body>
+    <div>
+      <input type="text" name="FirstName" id="FirstName" placeholder="First Name" required />
+      <br>
+      <input type="password" name="password" id="password"  placeholder="Password" required />
+      <br>
+      <input type="text" name="Email" id="Email" placeholder="Email" required />
+      <br>
+      <input type="text" name="MobileNo" id="MobileNo" placeholder="Mobile No" required />
+      <br>
+      <input
+        type="text"
+        name="LastnameAndAddress"
+        id="LastnameAndAddress"
+        placeholder="Last Name and Address"
+        required
+      />
+      <br>
+      <button onclick="submit()">Login</button>
+      <div id="errorDiv"></div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JavaScript Dialogue Boxes</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f0f0f0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    h2 {
+      color: #333;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      margin-top: 10px;
+      cursor: pointer;
+      border: none;
+      border-radius: 5px;
+      background: #007bff;
+      color: white;
+    }
+
+    button:hover {
+      background: #0056b3;
+    }
+
+    #message {
+      margin-top: 20px;
+      font-size: 18px;
+      color: #333;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h2>JavaScript Dialogue Boxes Example</h2>
+
+  <button onclick="showDialogs()">Click to See Dialog Boxes</button>
+  <div id="message"></div>
+  <script>
+    function showDialogs() {
+      alert("Welcome to the Dialogue Box Demo!");
+
+     
+      let confirmAction = confirm("Do you want to continue?");
+
+      if (confirmAction) {
+        
+        let name = prompt("Please enter your name:");
+
+        if (name) {
+          
+          alert("Hello, " + name + "! Nice to meet you.");
+          document.getElementById("message").innerText =
+            "User name: " + name;
+        } else {
+          
+          alert("You didn’t enter a name.");
+          document.getElementById("message").innerText =
+            "No name was entered.";
+        }
+
+      } else {
+        
+        alert("You chose to cancel. Goodbye!");
+        document.getElementById("message").innerText =
+          "User cancelled the operation.";
+      }
+    }
+  </script>
+
+</body>
+</html>
